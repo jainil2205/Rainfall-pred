@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <title>Help</title>
+    <style>
+        body{
+            background-color: azure;
+        }
+        h1{
+            background-color: cadetblue;
+            width: 700px;
+            text-align: center;
+            margin: auto;
+            margin-top: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 2em;
+            border-style: double;
+            border-width: 10px;
+        }
+        
+        h2{
+            text-align: center;
+            background-color: cadetblue;
+            width: 80%;
+            margin-left: 150px;
+            border-style: double;
+            border-width: 10px;
+            padding: 10px;
+            border-radius: 2em;
+        }
+        h4{
+            background-color: cadetblue;
+            width: 100%;
+            text-align: center;
+            border: solid black 3px;
+            border-collapse: collapse;
+            border-radius: 2em;
+        }
+        .aboutInfo, .weather, .dp, .slp, .floodAttr, .contact{
+            width: 80%;
+            margin-left: 150px;
+            background-color: rgb(142, 220, 223);
+            padding: 10px;
+            border-radius: 2em;
+            margin-top: 10px;
+        }
+        .attInfo{
+            background-color: rgb(142, 220, 223);
+            border-radius: 2em;
+            padding: 10px;
+        }
+        .attInfo h4{
+            background-color: cadetblue;
+        }
+        .attributes{
+            width: 80%;
+            margin-left: 150px;
+            margin-bottom: 15px;
+        }
+        table{
+            text-align: center;
+            margin: auto;
+        }
+        td{
+            padding: 10px;
+            width: 200px;
+            margin-left: 100px;
+            margin-right: 100px;
+            border: solid black 2px;
+            margin: auto;
+        }
+        a{
+            color: rgb(255, 0, 43);
+            font-weight: bold;
+        }
+        body{
+            background-size: 1000px 1000px;
+        }
+    </style>
+</head>
+<body background="/static/help.jpg">
+   <h1>Welcome to the Help page</h1> 
+   <div class="about">
+       
+       <div class="aboutInfo">
+        <h4>What is this project about?</h4>
+           <p class="info">
+               Floods have become a common occurence throughout India. Our project helps the relevant authorities predict the floods
+               and warn the people and help them evacuate through neccesary helplines. 
+               Navigate to our "About" page for more information about our project.
+           </p>
+       </div>
+       <br>
+       <div class="rain">
+        <h2>Rainfall Prediction Module</h2>
+        
+        <div class="attributes">
+            <div class="attInfo">
+                <h4>What are the attributes that go into this?</h4>
+                The rainfall prediction module requires several scientific attributes that include the following: <br>
+                &bullet; <strong>Date:</strong> The day of prediction and the month of prediction. <br>
+                &bullet; <strong>Temperature:</strong> The highest, lowest, and average temperature in C&deg;. <br>
+                &bullet; <strong>Dew Point:</strong> The highest, lowest, and average Dew Point temperature. <br>
+                &bullet; <strong>Humidity:</strong> The highest, lowest, and average Humidity. <br>
+                &bullet; <strong>Sea Level pressure:</strong> The highest, lowest, and average SLP. <br>
+                &bullet; <strong>Visibilty: </strong> The maximum, minimum, and average visibility in KM. <br>
+                &bullet; <strong>Wind speed:</strong> The wind speed in meter/seconds. <br>
+            </div>
+        </div>
+        
+        <div class="weather">
+            <h4>Where do we find all these attributes?</h4>
+            <p>Granted that many of these attributes are scientific, some of these attributes can be retrieved from the following link:</p>
+            <p><a href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=30&lon=-20&zoom=5">Click on this link for a weather forecast website.</a></p>
+        </div>
+        
+        <div class="dp">
+            <h4>What is Dew Point temperature?</h4>
+            <p>The dew point is the temperature the air needs to be cooled to (at constant pressure) in order to achieve a relative humidity (RH) of 100%. At this point the air cannot hold more water in the gas form. If the air were to be cooled even more, water vapor would have to come out of the atmosphere in the liquid form, usually as fog or precipitation.</p>
+            <br>
+            <p>Most people are comfortable with a dew-point temperature of 60 degrees Fahrenheit (16 degrees Celsius) or lower. At a higher dew point of, for example, 70 F (21 C), most people feel hot or "sticky" because the amount of water vapor in the air slows the evaporation of perspiration and keeps the body from cooling.</p>
+        </div>
+        
+        <div class="slp">
+            <h4>What is Sea Level Pressure?</h4>
+            <p>Atmospheric pressure is an indicator of weather. When a low-pressure system moves into an area, it usually leads to cloudiness, wind, and precipitation. High-pressure systems usually lead to fair, calm weather. <br>
+             Meteorologists use a metric unit for pressure called a millibar and the average pressure at sea level is 1013.25 millibars.
+            </p>
+        </div>
+       </div>
+       <br>
+       <br>
+       <br>
+       <br>
+       <h2>Flood Prediction module</h2>
+       
+       <div class="floodAttr">
+        <h4>What are the attributes required?</h4>
+           <p>There are 36 Meteorological subdivisions in India. <br>
+            We design a project to predict floods in all 36 of these subdivisions.
+        </p>
+        <p>Along with the subdivisions, we input the year we need the prediction for along with the monthly rainfall in millimeters.</p>
+       </div>
+   </div>
+   <!-- <div class="contact"> -->
+       <!-- <h4>Who do you contact if you encounter any problems with the website?</h4> -->
+       <!-- <table class="tab">
+           <tr>
+               <td><a href="mailto:yathreya12@gmail.com">Yashas Athreya B R</a></td>
+               <td><a href="mailto:yathreya12@gmail.com">Sagar K</a></td>
+               <td><a href="mailto:yathreya12@gmail.com">Vaishali B V</a></td>
+           </tr>
+           <tr>
+               <td><a href="tel:+917353594566"></a>Number</td>
+               <td><a href="tel:+917353594566"></a>Number</td>
+               <td><a href="tel:+917353594566"></a>Number</td>
+           </tr>
+       </table> -->
+   <!-- </div> -->
+</body>
+</html>

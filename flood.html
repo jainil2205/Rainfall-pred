@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='account.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <title>Title</title>
+    <style>
+        a:hover{
+        background-color: black;
+        }
+
+        body{
+        background: url("/static/flooding.jpg");
+        background-size: 1400px 1700px;
+        }
+
+        #SUBDIVISION{
+        width: 25em;
+        height: 3em;
+        }
+
+        label{
+        width: 10em;
+        color: white;
+        background-color:#0d3e4f;
+        }
+body {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+    </style>
+</head>
+<body>
+<div class="topnav">
+
+  <a class="active" href="/logout">Logout</a></a>
+    <a class="active" href="/flood">Flood Detection</a></a>
+</div>
+
+    <center>{% with messages = get_flashed_messages() %}
+   {% if messages %}
+     <ul class="flashes">
+        {% for message in messages %}
+         <div style="background-color:white;text-align:center;color:blue;font-size:20px;" class="message_flash">{{ message }}</div>
+        {% endfor %}
+    </ul>
+  {% endif %}
+ {% endwith %}</center>
+
+    <div class="container">
+        <br>
+        <br>
+        <center>
+        <form action = "/predicts" method = "post" enctype="multipart/form-data">
+            <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <label for="psw">SUBDIVISION</label>
+                            </div><br>
+                            <div class="col-lg-8 col-md-8">
+                                <select class="form-control" id="SUBDIVISION" name="SUBDIVISION">
+                                    <option value="1">ANDAMAN & NICOBAR ISLANDS</option>
+                                    <option value="2">ARUNACHAL PRADESH</option>
+                                    <option value="3">ASSAM & MEGHALAYA</option>
+                                    <option value="4">NAGALAND, MANIPUR, MIZORAM, and TRIPURA</option>
+                                    <option value="5">SUB HIMALAYAN WEST BENGAL & SIKKIM</option>
+                                    <option value="6">GANGETIC WEST BENGAL</option>
+                                    <option value="7">ORISSA</option>
+                                    <option value="8">JHARKHAND</option>
+                                    <option value="9">BIHAR</option>
+                                    <option value="10">EAST UTTAR PRADESH</option>
+                                    <option value="11">WEST UTTAR PRADESH</option>
+                                    <option value="12">UTTARAKHAND</option>
+                                    <option value="13">HARYANA DELHI & CHANDIGARH</option>
+                                    <option value="14">PUNJAB</option>
+                                    <option value="15">HIMACHAL PRADESH</option>
+                                    <option value="16">JAMMU & KASHMIR</option>
+                                    <option value="17">WEST RAJASTHAN</option>
+                                    <option value="18">EAST RAJASTHAN</option>
+                                    <option value="19">WEST MADHYA PRADESH</option>
+                                    <option value="20">EAST MADHYA PRADESH</option>
+                                    <option value="21">GUJARAT REGION</option>
+                                    <option value="22">SAURASHTRA & KUTCH</option>
+                                    <option value="23">KONKAN & GOA</option>
+                                    <option value="24">MADHYA MAHARASHTRA</option>
+                                    <option value="25">MATATHWADA</option>
+                                    <option value="26">VIDARBHA</option>
+                                    <option value="27">CHHATTISGARH</option>
+                                    <option value="28">COASTAL ANDHRA PRADESH</option>
+                                    <option value="29">TELANGANA</option>
+                                    <option value="30">RAYALSEEMA</option>
+                                    <option value="31">TAMIL NADU</option>
+                                    <option value="32">COASTAL KARNATAKA</option>
+                                    <option value="33">NORTH INTERIOR KARNATAKA</option>
+                                    <option value="34">SOUTH INTERIOR KARNATAKA</option>
+                                    <option value="35">KERALA AND MAHE</option>
+                                    <option value="36">NORTH INTERIOR KARNATAKA</option>
+                                </select>
+                            </div>
+                        </div>
+<!--            <label for="psw"><b></b></label> SUBDIVISION  <input type="text" placeholder="" name="SUBDIVISION" ><br>&ndash;&gt;-->
+            <br><label for="psw"><b></b>YEAR</label>   <input type="text" placeholder="" name="YEAR" ><br>
+            <label for="psw"><b></b>JAN (Rainfall in mm)</label>     <input type="text" placeholder="" name="JAN" ><br>
+            <label for="psw"><b></b>FEB (Rainfall in mm)</label>   <input type="text" placeholder="" name="FEB" ><br>
+            <label for="psw"><b></b>MAR (Rainfall in mm)</label>    <input type="text" placeholder="" name="MAR" ><br>
+            <label for="psw"><b></b>APR (Rainfall in mm)</label>    <input type="text" placeholder="" name="APR" ><br>
+            <label for="psw"><b></b>MAY (Rainfall in mm)</label>    <input type="text" placeholder="" name="MAY" ><br>
+            <label for="psw"><b></b>JUN (Rainfall in mm)</label>    <input type="text" placeholder="" name="JUN" ><br>
+            <label for="psw"><b></b>JUL (Rainfall in mm)</label>    <input type="text" placeholder="" name="JUL" ><br>
+            <label for="psw"><b></b>AUG (Rainfall in mm)</label>    <input type="text" placeholder="" name="AUG" ><br>
+            <label for="psw"><b></b>SEP (Rainfall in mm)</label>  <input type="text" placeholder="" name="SEP" ><br>
+            <label for="psw"><b></b>OCT (Rainfall in mm)</label>  <input type="text" placeholder="" name="OCT" ><br>
+            <label for="psw"><b></b>NOV (Rainfall in mm)</label>   <input type="text" placeholder="" name="NOV" ><br>
+            <label for="psw"><b></b>DEC (Rainfall in mm)</label>    <input type="text" placeholder="" name="DEC" ><br>
+            <br>
+
+            <br>
+            <br>
+            <button type="submit">Predict</button>
+        </form></center>
+
+    </div>
+
+
+</body>
+</html>

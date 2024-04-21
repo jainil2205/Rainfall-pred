@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='account.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <title>Rainfall Prediciton</title>
+    <style>
+        body{
+        background:url("/static/rain.jpg");
+        background-size: 1400px 1700px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        label{
+            background-color: darkgreen;
+        color:yellow;
+        }
+        .firstThree{
+            width: 60px;
+        }
+        .firstThree input[type="text"]{
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        function show_val_wind(val){
+            document.getElementById("w").innerHTML=val+" meters/seconds";
+        }
+        function show_val_hv(val){
+            document.getElementById("hv").innerHTML=val+" KM";
+        }
+        function show_val_av(val){
+            document.getElementById("av").innerHTML=val+" KM";
+        }
+        function show_val_lv(val){
+            document.getElementById("lv").innerHTML=val+" KM";
+        }
+        function show_val_mt(val){
+            document.getElementById("mt").innerHTML=val+" C&deg";
+        }
+        function show_val_mit(val){
+            document.getElementById("mit").innerHTML=val+" C&deg";
+        }
+        function show_val_at(val){
+            document.getElementById("at").innerHTML=val+" C&deg";
+        }
+        function show_val_hd(val){
+            document.getElementById("hd").innerHTML=val+" C&deg";
+        }
+        function show_val_ld(val){
+            document.getElementById("ld").innerHTML=val+" C&deg";
+        }
+        function show_val_ad(val){
+            document.getElementById("ad").innerHTML=val+" C&deg";
+        }
+        function show_val_hh(val){
+            document.getElementById("hh").innerHTML=val+" %";
+        }
+        function show_val_lh(val){
+            document.getElementById("lh").innerHTML=val+" %";
+        }
+        function show_val_ah(val){
+            document.getElementById("ah").innerHTML=val+" %";
+        }
+        function show_val_hslp(val){
+            document.getElementById("hslp").innerHTML=val+" millibars";
+        }
+        function show_val_lslp(val){
+            document.getElementById("lslp").innerHTML=val+" millibars";
+        }
+        function show_val_aslp(val){
+            document.getElementById("aslp").innerHTML=val+" millibars";
+        }
+
+    </script>
+</head>
+<body>
+<div class="topnav">
+  
+  <a class="active" href="/logout">Logout</a>
+    <a class="active" href="/flood">Flood Detection</a>
+</div>
+
+    <center style="font-size: 40px;">{% with messages = get_flashed_messages() %}
+   {% if messages %}
+     <ul class="flashes">
+        {% for message in messages %}
+         <div style="color:white;" class="message_flash">{{ message }}!!</div>
+        {% endfor %}
+    </ul>
+  {% endif %}
+ {% endwith %}</center>
+
+    <div class="container">
+        <br>
+        <center>
+        <form action = "/predict" method = "post" enctype="multipart/form-data">
+            <label for="psw"><b></b>Month of prediction</label>  <br>  
+            <select name="month" id="" style="width: 300px;height: 50px;">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <br>
+            <br>
+            <label for="psw"><b></b>Day of prediction</label>
+            <br>
+            <select name="day" id="" style="width: 300px;height: 50px;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+            <br><br><br>
+            <label for="year">Enter year</label><br>
+
+            <input type="number" name="year" id="year" required id="" style="width: 300px;height: 50px;">
+            <br>
+            <br><br><br>
+            <label for="psw"><b></b>Average wind speed</label><br>
+            <input type="range" name="windAvg" id="" min="0" max="10" onchange="show_val_wind(this.value)"> <span style="background-color: antiquewhite;width: 10px;" id="w"></span><br><br>
+
+
+            <div class="parent-container d-flex">
+                <div class="container my-5">
+                    <label for="psw"><b></b>Highest visibility</label>   <input type="range" placeholder="" name="visibilityHigh" min="0" max="10" onchange="show_val_hv(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="hv"></span><br><br><br>
+                    <label for="psw"><b></b>Lowest visibility</label>    <input type="range" placeholder="" name="visibilityLow" min="0" max="10" onchange="show_val_lv(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="lv"></span><br><br><br>
+                    <label for="psw"><b></b>Average visibility</label>   <input type="range" placeholder="" name="visibilityAvg" min="0" max="10" onchange="show_val_av(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="av"></span><br><br><br>
+                </div>
+                <div class="container my-5">
+                    <label for="psw"><b></b>Max temp</label>    <input type="range" placeholder="" min="0" max="40" name="tempHigh" onchange="show_val_mt(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="mt"></span><br><br><br>
+                    <label for="psw"><b></b>Min temp</label>    <input type="range" placeholder="" min="0" max="40" name="tempLow" onchange="show_val_mit(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="mit"></span><br><br><br>
+                    <label for="psw"><b></b>Avg temp</label>    <input type="range" placeholder="" min="0" max="40" name="tempAvg" onchange="show_val_at(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="at"></span><br><br><br>
+                </div>
+                <div class="container my-5">
+                    <label for="psw"><b></b>Highest DewPoint</label>    <input type="range" placeholder="" min="0" max="30" name="DPHigh" onchange="show_val_hd(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="hd"></span><br><br><br>
+                    <label for="psw"><b></b>Lowest DewPoint</label>    <input type="range" placeholder="" min="0" max="30" name="DPLow" onchange="show_val_ld(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="ld"></span><br><br><br>
+                    <label for="psw"><b></b>Avg DewPoint</label>    <input type="range" placeholder="" min="0" max="30" name="DPAvg" onchange="show_val_ad(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="ad"></span><br><br><br>
+                    
+                </div>
+                <div class="container my-5">
+                    <label for="psw"><b></b>Highest Humidity</label>   <input type="range" placeholder="" min="0" max="100" name="humidityHigh" onchange="show_val_hh(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="hh"></span><br><br><br>
+                    <label for="psw"><b></b>Lowest Humidity</label>    <input type="range" placeholder="" min="0" max="100" name="humidityLow" onchange="show_val_lh(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="lh"></span><br><br><br>
+                    <label for="psw"><b></b>Avg Humidity</label>    <input type="range" placeholder="" min="0" max="100" name="humidityAvg" onchange="show_val_ah(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="ah"></span><br><br><br>
+                </div>
+                <div class="container my-5">
+                    <label for="psw"><b></b>Max Sea Level pressure</label>    <input type="range" placeholder="" min="1000" max="1030" name="SLPHigh"  onchange="show_val_hslp(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="hslp"></span><br><br><br>
+                    <label for="psw"><b></b>Min Sea level pressure</label>    <input type="range" placeholder="" min="1000" max="1030" name="SLPLow"  onchange="show_val_lslp(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="lslp"></span><br><br><br>
+                    <label for="psw"><b></b>Avg Sea Level pressure</label>    <input type="range" placeholder="" min="1000" max="1030" name="SLPAvg"  onchange="show_val_aslp(this.value)"><br><span style="background-color: antiquewhite;width: 10px;" id="aslp"></span><br><br><br>
+                </div>
+            </div>
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <br>
+            <br>
+            <button type="submit">Predict</button>
+        </form></center>
+
+    </div>
+
+
+</body>
+</html>
